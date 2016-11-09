@@ -1,0 +1,60 @@
+.helpBlock{
+  color: red;
+}
+
+.well{
+  color: green;
+}
+.searchBox{
+  float: right !important;
+}
+.menuIcon{
+  padding: 0px 10px 0px 0px;
+}
+.container-fluid{
+  padding: 60px 00px 00px 0px;
+}
+.navbar-default{
+  background-color: #2196f3;
+}
+a.navbar-brand:hover{
+  font-size: 20px;
+}
+.navbar-default .navbar-brand{
+  color: #FCFCFC;
+}
+div.custome-row{
+  margin: 10px;
+}
+table.table-custome{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+button.custome-button{
+  background-color: #2196f3;
+  border-color: #0681e3;
+}
+
+button.custome-button:hover{
+  background-color: #0681e3;
+  border-color: #0681e3;
+}
+
+button.btn-primary:active{
+  background-color: #2196f3;
+  border-color: #0681e3;
+}
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: white;
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover{
+  color: #FCFCFC;
+}
+
+@media (min-width: 768px) {
+  #menu-toggle{
+    display: block;
+    float: right !important;
+  }
+}

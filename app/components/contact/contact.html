@@ -1,0 +1,72 @@
+<p>
+  <b>Our locations</b>
+  <br>
+</p>
+<ul>
+  <li>Baner, Pune (Maharashtra)</li>
+  <li>Bhuvneshwar(Chattisgarh)</li>
+</ul>
+<br>
+<div class="col-lg-8">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Submit your Query</h3>
+    </div>
+    <div class="panel-body">
+      <!-- submitted flag is used for
+       when form data is submitted, controller set cust object to null and control is returned to view.
+       At view side cust object is null so its doing validation of form filed, and displaying error messages.
+       To avoid the validation after form submission these flag is used while displaying error messages.
+       -->
+      <form class="form-horizontal" name="contactForm" ng-submit="submitContactForm()" novalidate>
+        <!--novalidate is used to disable default browser validation -->
+        <div class="form-group">
+          <label class="control-label col-sm-2">Name:</label>
+           <div class="col-sm-10">
+             <input type="text" class="form-control" name="custName" ng-pattern ="/^[a-zA-Z\s]*$/" ng-model="cust.Name" placeholder="Enter name" required>
+             <p ng-show="contactForm.custName.$invalid && !contactForm.custName.$pristine" class="helpBlock">Enter a valid name.</p>
+           </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2">Email:</label>
+           <div class="col-sm-10">
+             <input type="email" class="form-control" name="custEmail" ng-model="cust.Email" placeholder="Enter email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.com$/" required>
+             <p ng-show="contactForm.custEmail.$invalid && !contactForm.custEmail.$pristine" class="helpBlock">Enter a valid email</p>
+           </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2">Subject:</label>
+           <div class="col-sm-10">
+             <input type="text" class="form-control" name="custSubject" ng-model="cust.Subject" placeholder="Enter subject" ng-minlength="10" required>
+             <p ng-show="contactForm.custSubject.$invalid && !contactForm.custSubject.$pristine || contactForm.custSubject.$error.minlength" class="helpBlock">Enter a valid subject.</p>
+           </div>
+        </div>
+
+        <!-- here message is optional-->
+        <div class="form-group">
+          <label class="control-label col-sm-2">Message:</label>
+           <div class="col-sm-10">
+             <textarea type="text" class="form-control" name="custMsg" ng-model="cust.Msg" placeholder="Enter message"></textarea>
+           </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <!-- do not submit the form data until the all form fields are valid.-->
+              <button type="submit" class="btn btn-primary custome-button" ng-disabled="contactForm.$invalid">Submit</button>
+              <button type="button" class="btn btn-default" ng-click="resetFormData()">Clear</button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- show response message when controlller return success message.-->
+
+      <div ng-hide="!isShowSucessMessage">
+        <div class="well">{{msg}}</div>
+      </div>
+    </div>
+  </div>
+</div>

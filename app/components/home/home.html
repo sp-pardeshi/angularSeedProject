@@ -1,0 +1,91 @@
+
+<div ng-hide="!userName">
+  <p>Welcome {{userName}} to Seed project</p>
+  <br>
+</div>
+<div ng-if = "!userName" class="col-lg-8">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Login</h3>
+    </div>
+    <div class="panel-body">
+      <p>Enter your credentials</p>
+      <form class="form-horizontal" name="loginForm" ng-submit="submitLoginForm()" novalidate>
+        <div class="form-group">
+          <label class="control-label col-sm-2">Email:</label>
+           <div class="col-sm-10">
+             <input type="email" class="form-control" name="custEmail" ng-model="user.Email" placeholder="Enter email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.com$/" required>
+             <p ng-show="loginForm.custEmail.$invalid && !loginForm.custEmail.$pristine" class="helpBlock">Enter a valid email</p>
+           </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2">Password:</label>
+           <div class="col-sm-10">
+             <input type="password" class="form-control" name="custPass" ng-pattern ="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" ng-model="user.Password" placeholder="Enter password" required>
+             <p ng-show="loginForm.custPass.$invalid && !loginForm.custPass.$pristine" class="helpBlock">Enter a valid Password.</p>
+           </div>
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox col-sm-offset-2 col-sm-10">
+              <label><input type="checkbox" name="remember" data-ng-click="rememberMe()" data-ng-model="remember">&nbsp; Remember Me</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary custome-button" ng-disabled="loginForm.$invalid">Submit</button>
+          </div>
+        </div>
+
+      </form>
+      <div ng-hide="!isShowLogoutMessage">
+        <div class="well">{{logoutMsg}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Show customer contact details only when global arrray is not empty. -->
+<div ng-show = "userName">
+  <div ng-show="CustomerContactDetails">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Customer contact details</h3>
+
+        </div>
+      <div class="panel-body">
+        <div class="row custome-row">
+          <div class="searchBox">
+            Search : <input type="text" ng-model="searchQuery"></input>
+          </div>
+        </div>
+        <div class="row custome-row">
+          <div class="table-responsive" style="border:0">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>SR.No.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="cust in CustomerContactDetails | filter : searchQuery">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{cust.Name}}</td>
+                    <td>{{cust.Email}}</td>
+                    <td>{{cust.Subject}}</td>
+                    <td>{{cust.Msg}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
