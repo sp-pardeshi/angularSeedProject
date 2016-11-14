@@ -1,8 +1,3 @@
-
-<div ng-hide="!userName">
-  <p>Welcome {{userName}} to Seed project</p>
-  <br>
-</div>
 <div ng-if = "!userName" class="col-lg-8">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -28,7 +23,7 @@
         </div>
 
         <div class="form-group">
-          <div class="checkbox col-sm-offset-2 col-sm-10">
+          <div class="col-sm-offset-2 col-sm-10">
               <label><input type="checkbox" name="remember" data-ng-click="rememberMe()" data-ng-model="remember">&nbsp; Remember Me</label>
           </div>
         </div>
@@ -60,6 +55,7 @@
             Search : <input type="text" ng-model="searchQuery"></input>
           </div>
         </div>
+      </div>
         <div class="row custome-row">
           <div class="table-responsive" style="border:0">
             <table class="table table-hover">
@@ -75,7 +71,7 @@
                 <tbody>
                   <tr ng-repeat="cust in CustomerContactDetails | filter : searchQuery">
                     <td>{{ $index + 1 }}</td>
-                    <td>{{cust.Name}}</td>
+                    <td><a href="">{{cust.Name}}</a></td>
                     <td>{{cust.Email}}</td>
                     <td>{{cust.Subject}}</td>
                     <td>{{cust.Msg}}</td>

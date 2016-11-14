@@ -13,11 +13,6 @@
         <h3 class="panel-title">Submit your Query</h3>
     </div>
     <div class="panel-body">
-      <!-- submitted flag is used for
-       when form data is submitted, controller set cust object to null and control is returned to view.
-       At view side cust object is null so its doing validation of form filed, and displaying error messages.
-       To avoid the validation after form submission these flag is used while displaying error messages.
-       -->
       <form class="form-horizontal" name="contactForm" ng-submit="submitContactForm()" novalidate>
         <!--novalidate is used to disable default browser validation -->
         <div class="form-group">

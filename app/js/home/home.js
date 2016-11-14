@@ -12,7 +12,6 @@ angular.module('myApp.home', ['ngRoute','ngCookies'])
 .factory('$remember', function() {
             function fetchValue(name) {
                 var gCookieVal = document.cookie.split("; ");
-                console.log("gCookieVal :: " + gCookieVal);
                 for (var i=0; i < gCookieVal.length; i++)
                 {
                     // a name/value pair (a crumb) is separated by an equal sign
@@ -32,7 +31,6 @@ angular.module('myApp.home', ['ngRoute','ngCookies'])
                 return null;
             }
             return function(name, values) {
-              console.log("name === "+name);
                 if(arguments.length === 1) return fetchValue(name);
                 var cookie = name + '=';
                 if(typeof values === 'object') {
@@ -89,5 +87,4 @@ angular.module('myApp.home', ['ngRoute','ngCookies'])
           $cookies.put('email',email);
           $window.location.reload();
   };
-
 }]);

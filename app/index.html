@@ -10,6 +10,8 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <link rel="stylesheet" href="css/app.css">
   <link rel="stylesheet" href="css/sideBar.css">
+  <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.min.css">
+
 </head>
 <body ng-app="myApp" ng-controller = "myAppCtrl">
   <div id="wrapper">
@@ -19,8 +21,8 @@
                <li class="sidebar-brand">
                  <a href="#">SampleSeedApplication</a>
                </li>
-              <div ng-repeat="menu in menuContent">
-                <li ng-class="{ active: isActive(menu.tabName)}">
+              <div class="menuList">
+                <li ng-class="{ active: isActive(menu.tabName)}" ng-repeat="menu in menuContent" class="menuListItem">
                    <a href={{menu.tabUrl}} data-ng-click="onMenuClick()">
                      <span class={{menu.iconName}} aria-hidden="true"></span>
                     {{menu.tabVal}}
@@ -28,8 +30,8 @@
                </li>
               </div>
 
-              <div ng-show="userName">
-                <li>
+              <div ng-show="userName" class="menuList">
+                <li ng-class="{ active: isActive(menu.tabName)}">
                   <a href="#" data-ng-click = "UserLogout()">
                     <span class="glyphicon glyphicon-log-out menuIcon" aria-hidden="true"></span>
                     Logout
@@ -52,11 +54,52 @@
               <a class="navbar-brand" href="#">
                 SampleSeedApplication
               </a>
+              <ul class="nav navbar-nav navbar-right hidden-lg hidden-md">
+                <li>
+                    <img src="images/avatar-tiny.jpg"
+                      class="img-circle" alt="example"/>
+                </li>
+              </ul>
             </div>
+
+            <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm" id="accDetails">
+              <li class="userDetails">
+                <a href="" data-toggle="popover" data-placement="bottom"
+                class="userDetailsPopover" title="Account Details"
+                data-content='
+                <div class="media">
+                  <a href="#" class="pull-left">
+                    <img src="images/avatar-tiny.jpg" class="media-object" alt="Avtar">
+                  </a>
+                  <div class="media-body">
+                    <h4 class="media-heading">Shubham Pardeshi</h4>
+                    <p>{{userName}}</p>
+
+                    <div class="row">
+                       <button type="submit" class="btn btn-primary custome-button">My Profile</button>
+                       <button type="button" class="btn btn-default logoutBtn">
+
+                         Sign Out
+                       </button>
+                    </div>
+
+                  </div>
+                </div>
+                '
+                data-ng-click="openUserDetailsPopover()">
+                {{userName}}
+              </a>
+            </li>
+          </ul>
+
         </nav>
 
          <div class="container-fluid">
+           <div class="row custome-row">
+                       </div>
+           <div class="row custome-row">
              <div ng-view></div>
+           </div>
          </div>
        </div>
 
@@ -68,11 +111,18 @@
   <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
 
   <script src="app.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="js/services/Utils.js"></script>
   <script src="js/contact/contact.js"></script>
   <script src="js/home/home.js"></script>
+  <script src="js/charts/charts.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- angular nvd3 and nvd3 and d3 charts lib.-->
+  <script src="bower_components/d3/d3.min.js" charset="utf-8"></script>
+  <script src="bower_components/nvd3/build/nv.d3.min.js"></script>
+  <script src="bower_components/angular-nvd3/dist/angular-nvd3.min.js"></script>
+
 
   <!-- Menu Toggle Script -->
    <script>
@@ -80,6 +130,11 @@
        e.preventDefault();
        $("#wrapper").toggleClass("toggled");
    });
+
+   $(document).on("click", ".logoutBtn", function($scope) {
+       $(document).UserLogout();
+   });
    </script>
+
 </body>
 </html>
