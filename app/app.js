@@ -6,7 +6,11 @@ angular.module('myApp', [
   'ngCookies',
   'myApp.home',
   'myApp.contact',
-  'myApp.charts'
+  'myApp.charts',
+  'myApp.grid',
+  'myApp.tree',
+  'ngTouch',
+  'ui.grid'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -33,7 +37,9 @@ angular.module('myApp', [
     $rootScope.menuContent = [
       {tabName:'/home',tabUrl:'#/home',iconName:'glyphicon glyphicon-home menuIcon',tabVal:'Home'},
       {tabName:'/contact',tabUrl:'#/contact',iconName:'glyphicon glyphicon-phone-alt menuIcon',tabVal:'Contact Us'},
-      {tabName:'/charts',tabUrl:'#/charts',iconName:'glyphicon glyphicon-stats menuIcon',tabVal:'charts'}
+      {tabName:'/charts',tabUrl:'#/charts',iconName:'glyphicon glyphicon-stats menuIcon',tabVal:'Charts'},
+      {tabName:'/grid',tabUrl:'#/grid',iconName:'glyphicon glyphicon-th-large menuIcon',tabVal:'Grid'},
+      {tabName:'/tree',tabUrl:'#/tree',iconName:'glyphicon glyphicon-tree-deciduous menuIcon',tabVal:'Tree Grid'}
     ];
   }
 

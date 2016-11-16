@@ -23,6 +23,7 @@
 }
 div.custome-row{
   margin: 10px;
+  margin-right: 10px;
 }
 table.table-custome{
   padding-left: 5px;
@@ -78,4 +79,9 @@ button.btn-primary:active{
   width: 35px;
   float: right !important;
   margin-right: 10px;
+}
+div.custome-row1{
+  margin-bottom: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
